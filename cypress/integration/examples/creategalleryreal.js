@@ -1,9 +1,10 @@
+
 import { createImg } from '../../pageObjects/createPage.js'
 import { navigation } from '../../pageObjects/navigation.js'
 
 
 describe ('Login through backend and set token in local storage', () => { 
-    before (() => {
+    beforeEach (() => {
         cy.logInThroughBackend()
     })
 

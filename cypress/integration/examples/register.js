@@ -9,49 +9,8 @@ var userData = {
     randomPassword: faker.internet.password() + faker.datatype.number(),
     randomConfirmPassword: faker.internet.password(),
     randomShortPassword: faker.internet.password(2),
-    randomPasswordOnlyString: faker.datatype.string()
+    randomPasswordOnlyString: faker.lorem.word(8)
 }
-
-/*describe ('Check successful register', () => {
-    before (() => {
-        cy.visit('')
-    })
-
-    it('Successful registration, and it leads to homepage', () => { 
-        registration.registerAccount(userData.randomName, userData.randomLastName, userData.randomEmail, userData.randomPassword, userData.randomPassword)
-        registration.clickAcceptTerms()
-        registration.clickSubmit()
-        cy.url().should('eq', 'https://gallery-app.vivifyideas.com/')
-    })
-
-})*/
-
-
-/*describe ('Register through backend, check if token exists and set it in localstorage', () => {  //RAZLIKA IZMEDJU REQUEST I DOLE INTERCEPTA JE STO SE REQUEST UOPSTE NE IZVRSAVA U FRONTENDU
-    before (() => {
-        cy.request('POST', 'https://gallery-api.vivifyideas.com/api/auth/register', {
-            email: userData.randomEmail,
-            first_name: userData.randomName,
-            last_name: userData.randomLastName,
-            password: userData.randomPassword,
-            password_confirmation: userData.randomPassword,
-            terms_and_conditions: true
-        }).its('body').then((response) => {
-            //expect(response.status).to.eq(200) radi bez its body
-            cy.log(JSON.stringify(response))
-            expect(response.access_token).to.exist
-
-            cy.log(JSON.stringify(window.localStorage))
-            window.localStorage.setItem('token', response.access_token)
-            expect(window.localStorage.token).to.exist
-        })
-    })
-
-    it('visit gallery', () => {
-        cy.visit('')
-    })
-
-})*/
 
 describe ('Check register page content, Register and use intercept', () => {
     before (() => {

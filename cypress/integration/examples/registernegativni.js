@@ -9,7 +9,7 @@ var userData = {
     randomPassword: faker.internet.password() + faker.datatype.number(),
     randomConfirmPassword: faker.internet.password(),
     randomShortPassword: faker.internet.password(2),
-    randomPasswordOnlyString: faker.datatype.string()
+    randomPasswordOnlyString: faker.lorem.word(8)
 }
 
 describe ('Registrujem account', () => {
