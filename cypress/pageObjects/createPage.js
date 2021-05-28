@@ -4,7 +4,11 @@ class CreateImg {
     }
     
     get imgUrl () {
-        return cy.get('input[type="url"]')
+        return cy.get('input[type="url"]').eq(0)
+    }
+
+    get secondImgUrl () {
+        return cy.get('input[type="url"]').eq(1)
     }
 
     get imgDescr () {
@@ -87,7 +91,40 @@ class CreateImg {
         return cy.get('p[class="alert alert-danger"]')
     }
 
-    create(imeSlike, descSlike, urlSlike) {
+    get addImage () {
+        return cy.get('form div:nth-of-type(3) > [type]')
+    }
+
+    get nextArrow () {
+        return cy.get('span[class="carousel-control-next-icon"]')
+    }
+
+    get previousArrow () {
+        return cy.get('span[class="carousel-control-prev-icon"]')
+    }
+    
+    get firstImg () {
+        return cy.get('img[src="https://www.beforeafter.rs/wp-content/uploads/2019/11/beogradski-fantom-cetiri-decenije-kasnije-10-before-after.jpg"]')
+    }
+
+    get secondImg () {
+        return cy.get('img[src="https://objektiv.rs/wp-content/uploads/2020/08/beogradski-fantom.png"]')
+    }
+
+    clickNextArrow () {
+        this.nextArrow.click()
+    }
+
+    clickPreviousArrow () {
+        this.previousArrow.click()
+    }
+
+    clickAddImage () {
+        this.addImage.click()
+    }
+
+    create(imeSlike, descSlike, urlSlike, urlDrugeSlike) {
+
         imeSlike = imeSlike || undefined  //if kako bismo mogli da smestimo prazan string
         if (imeSlike != undefined) {
             this.imgName.type(imeSlike)
@@ -102,6 +139,10 @@ class CreateImg {
         if (urlSlike != undefined) {
             this.imgUrl.type(urlSlike)
         }
+
+        this.addImage.click()
+
+        urlDrugeSlike = this.secondImgUrl.type(urlDrugeSlike)
 
         //this.imgName.type(imeSlike)  //this znaci dobavi element iz postojece klase (class AuthLogin)
         //this.imgUrl.type(urlSlike)
